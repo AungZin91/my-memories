@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ကျွန်ုပ်အကြောင်း ❤️</title>
+    <style>
+        body { 
+            background: #2a0008; color: white; text-align: center; margin: 0; padding: 20px;
+            font-family: sans-serif; display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; overflow: hidden; 
+        }
+
+        /* ပူဖောင်းနှင့် စာသားများ လွင့်မျောခြင်း */
+        .float-item { position: absolute; color: #ff4d6d; font-size: 20px; pointer-events: none; animation: floatUp 10s linear infinite; }
+        @keyframes floatUp { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+
+        .content { 
+            background: rgba(255, 77, 109, 0.2); padding: 25px; border-radius: 25px; 
+            border: 2px solid #ff4d6d; max-width: 350px; margin-top: 50px; z-index: 10;
+        }
+
+        h1 { color: #ff4d6d; margin-bottom: 20px; }
+
+        .btn-container {
+            display: flex; flex-direction: column; gap: 15px; 
+            width: 100%; max-width: 300px; margin-top: 30px; z-index: 10;
+        }
+
+        .btn { 
+            padding: 15px; background: #ff4d6d; color: white; text-decoration: none; 
+            border-radius: 20px; font-weight: bold; font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="floatContainer"></div>
+
+    <div class="content">
+        <h1>❤️မိန်းမအတွက်❤️</h1>
+        <p>🎀🌹 ဒီ Website လေးဟာ ချစ်ရသူအတွက် အထူးဖန်တီးထားတာ ဖြစ်ပါသည်။ ကိုယ့်ရဲ့ ပထမဆုံး ကြိုးစားမှုလေးပါ🎀🌹။</p>
+    </div>
+
+    <div class="btn-container">
+        <a href="gallery.html" class="btn">📸 🫶နှိပ်ကြည့်လေ-သဲလေး-🫶📸</a>
+        <a href="index.html" class="btn">🏠 ပင်မသို့ ပြန်သွားရန်</a>
+    </div>
+
+    <script>
+        const container = document.getElementById('floatContainer');
+        const items = ["❤️", "I Love You", "💖", "I Love You", "💘"];
+        
+        for(let i=0; i<20; i++) {
+            let item = document.createElement('div');
+            item.className = "float-item";
+            item.innerHTML = items[Math.floor(Math.random() * items.length)];
+            item.style.left = Math.random() * 100 + "%";
+            item.style.animationDelay = Math.random() * 10 + "s";
+            item.style.fontSize = (Math.random() * 20 + 15) + "px";
+            container.appendChild(item);
+        }
+    </script>
+</body>
+</html>

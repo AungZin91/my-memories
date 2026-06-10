@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ကျွန်တော်တို့ရဲ့ အမှတ်တရများ</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #ffe6e6; padding: 20px; overflow-x: hidden; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #ff4d4d; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; }
+        
+        /* အသဲပုံ လွင့်စေတဲ့ Animation */
+        .heart { position: fixed; bottom: -10%; color: #ff4d4d; animation: floatUp 5s linear infinite; font-size: 20px; z-index: 999; }
+        @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-110vh); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <a href="gallery.html" class="back-btn">⬅ Gallery သို့ ပြန်သွားမည်</a>
+
+    <h1>💌ဒီနေရာမှာ ပုံလေးတွေ၊စာတေတင်လို့ရပါတယ်💌</h1>
+
+    <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1); border-radius:2px; width:100%; max-width:800px; margin: auto; background:#F4F4F4">
+        <iframe src="https://padlet.com/embed/qd9jvpo2jnvao0op" frameborder="0" style="width:100%; height:600px; display:block;"></iframe>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 800);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home ❤️</title>
+    <style>
+        body { background: #2a0008; color: white; text-align: center; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
+        .bubble { position: absolute; font-size: 40px; animation: float 8s linear infinite; }
+        @keyframes float { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        h1 { font-size: 32px; margin-bottom: 30px; color: #ff4d6d; }
+        a { display: block; margin: 15px; padding: 20px 40px; background: #ff4d6d; color: white; text-decoration: none; border-radius: 50px; font-size: 20px; font-weight: bold; width: 250px; }
+    </style>
+</head>
+<body>
+    <div id="bubbles"></div>
+    <h1>❤️အချစ်ရဆုံးအမျိုးသမီးလေးအတွက် ❤️</h1>
+
+    <a href="about.html">🎀ကိုယ်တို့ရဲ့ကမ္ဘာလေး🎀</a>
+
+    <script>
+        for(let i=0; i<10; i++) {
+            let b = document.createElement('div');
+            b.innerHTML = (i%2==0 ? "❤️" : "💖");
+            b.className = "bubble";
+            b.style.left = Math.random()*90 + "%";
+            b.style.animationDelay = i*0.8 + "s";
+            document.getElementById('bubbles').appendChild(b);
+        }
+    </script>
+</body>
+</html>
+
+

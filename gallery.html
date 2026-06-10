@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love ❤️</title>
+    <style>
+        body { margin: 0; background: #2a0008; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; overflow: hidden; }
+        
+        /* ခလုတ်များ */
+        .btn { padding: 15px 25px; background: #ff4d6d; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; margin: 10px; z-index: 50; }
+        #playBtn { animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        /* Slide Container */
+        .slide-container { width: 320px; height: 450px; position: relative; border: 3px solid #ff4d6d; border-radius: 20px; background: #000; display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
+        .slide { position: absolute; opacity: 0; transition: 1s; text-align: center; }
+        .slide.active { opacity: 1; }
+        .slide img { width: 280px; height: 280px; object-fit: cover; border-radius: 50% 50% 0 50%; border: 5px solid #ff99cc; }
+        .caption { color: #fff; font-size: 18px; font-weight: bold; margin-top: 15px; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <audio id="myAudio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="playBtn" class="btn" onclick="playMusic()">❤️ ကိုယ့်ရင်ထဲကအသံ</button>
+<button class="btn" onclick="checkSecret()">ကိုယ့်ရင်ထဲကိုဆက်သွားမယ် ➡️</button>
+
+<script>
+    function checkSecret() {
+        let p = prompt("🔐 နောက်ဆုံး လျှို့ဝှက်ချက် - Password ရိုက်ပါ");
+        if (p === "2121992") { // အစ်ကိုကြီးကြိုက်တဲ့ Password ကို ဒီမှာပြောင်းပါ
+            window.location.href = "upload.html"; 
+        } else if (p !== null) {
+            alert("မှားနေတယ် အချစ်ရေ! မရပါဘူးနော်..");
+        }
+    }
+</script>
+
+
+    <div class="slide-container" id="slideshow"></div>
+
+    <script>
+        function playMusic() {
+            document.getElementById('myAudio').play();
+            document.getElementById('playBtn').style.display = 'none';
+        }
+
+        const texts = ["ကိုယ့်ဘဝအတွက်", "အရမ်းချစ်ရတဲ့သူ", "နိုင်ငံခြားမှာ အလုပ်လုပ်နေတာ", "အရမ်းလွမ်းတယ်", "ဂရုစိုက်ပါ", "ပြန်လာဖို့ စောင့်နေမယ်", "ကလေးလေးလိုချွဲတတ်သူ", "ကိုယ့်အတွက်တော့ သူပဲရှိတယ်", "အားတင်းထားနော်", "အရာအားလုံး အဆင်ပြေပါစေ", "အမြဲတမ်း အတူတူရှိနေမှာပါ", "မိန်းမရှိမှပဲ ပြည့်စုံတာ", "အဝေးရောက်နေပေမယ့်", "စိတ်ဓာတ်မကျနဲ့နော်", "မိန်းမရေ", "အရမ်းချစ်တယ်", "အမြန်ဆုံး ပြန်လာခဲ့ပါ", "ဒီအချိန်တွေကို လွမ်းတယ်", "အတူတူ လျှောက်လှမ်းမယ့်လမ်း", "အမှတ်တရတွေ များစွာနဲ့", "ပျော်ရွှင်စေရမယ်", "ကိုယ်စောင့်နေမှာပါ", "ကိုယ့်အချစ်ရဆုံး", "တယောက်တည်းသောအမျိုးသမီးလေး", "ချစ်ဇနီးအတွက်", "ကြိုးစားထားတာလေး"];
+        
+        const container = document.getElementById('slideshow');
+        for(let i=1; i<=26; i++) {
+            let div = document.createElement('div');
+            div.className = 'slide ' + (i===1 ? 'active' : '');
+            div.innerHTML = `<img src="image/p${i.toString().padStart(3, '0')}.jpg">
+                             <div class="caption">${texts[i-1]}</div>`;
+            container.appendChild(div);
+        }
+
+        let current = 0;
+        setInterval(() => {
+            document.querySelectorAll('.slide')[current].classList.remove('active');
+            current = (current + 1) % 26;
+            document.querySelectorAll('.slide')[current].classList.add('active');
+        }, 4000);
+    </script>
+</body>
+</html>
