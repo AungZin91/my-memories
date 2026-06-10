@@ -55,7 +55,7 @@
         for(let i=1; i<=26; i++) {
             let div = document.createElement('div');
             div.className = 'slide ' + (i===1 ? 'active' : '');
-            div.innerHTML = `<img src="image/p${i.toString().padStart(3, '0')}.jpg">
+            div.innerHTML = `<img src="p${i.toString().padStart(3, '0')}.jpg">
                              <div class="caption">${texts[i-1]}</div>`;
             container.appendChild(div);
         }
